@@ -57,10 +57,8 @@ st.markdown("""
 <div class="page-banner">
     <div>
         <div style="font-size: 24px; font-weight: 800;">🌍 宏观政策实验室 <span style="font-size:18px; opacity:0.8; font-weight:400;">(Macro Lab)</span></div>
-        <div style="font-size: 16px; margin-top:5px; opacity:0.9;">西南交通大学希望学院 · 人力资源管理专业</div>
     </div>
     <div style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 14px;">
-        👩‍🏫 课程负责人：黎雅月
     </div>
 </div>
 """, unsafe_allow_html=True)
