@@ -5,7 +5,7 @@ from PIL import Image
 # 1. 门户配置
 # ==========================================
 st.set_page_config(
-    page_title="LMDT - 黎雅月老师教学平台",
+    page_title="LMDT - 老师教学平台",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -106,7 +106,6 @@ st.markdown("""
     </div>
     <div style="text-align: right;">
         <div class="author-badge">👩‍🏫 课程负责人：黎雅月</div>
-        <div style="margin-top:10px; font-size:14px; opacity:0.8;">第七届全国高校教师技能创新大赛参赛作品</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
