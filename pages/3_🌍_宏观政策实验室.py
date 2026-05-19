@@ -70,7 +70,7 @@ st.markdown("""
 def calc_beveridge_core(ai_risk, mismatch, min_wage_change, ubi_rate, reskilling_subsidy):
     u_axis = np.linspace(0.5, 20, 200) # 生成失业率自变量轴
     
-    # 基础匹配效率常数 k0 = 20
+    # 基础匹配效率常数 k0 = 20 
     # 尝试 B 的陷阱：提高失业救济金会降低求职强度，使匹配效率恶化，曲线向右上方外移
     ubi_effect = max(0, (ubi_rate - 40) * 0.8) 
     
@@ -84,7 +84,7 @@ def calc_beveridge_core(ai_risk, mismatch, min_wage_change, ubi_rate, reskilling
     # 计算当前政策环境下的基础空缺率 V
     v_axis = k / u_axis
     
-    # 尝试 A 的陷阱：提高最低工资导致劳动需求沿 D 曲线收缩
+    # 尝试 A 的陷阱：提高最低工资导致劳动需求沿 D 曲线收缩 
     # 模型表现为：当前市场均衡点在 UV 曲线向右下方滑动（失业率上升，空缺率下降）
     base_u = np.sqrt(k) # 当前市场自然均衡失业率
     
@@ -102,8 +102,8 @@ with st.sidebar:
     st.header("🌍 宏观驾驶舱")
     
     st.subheader("⚠️ 风险监测")
-    ai_risk = st.slider("AI 替代冲击 (%)", 0, 100, 40) # 对应案例设定：40%高风险
-    mismatch = st.slider("技能错配度 (θ)", 0.0, 2.0, 1.8) # 对应案例设定：1.8严重错配
+    ai_risk = st.slider("AI 替代冲击 (%)", 0, 100, 40) # 对应案例设定：40%高风险 
+    mismatch = st.slider("技能错配度 (θ)", 0.0, 2.0, 1.8) # 对应案例设定：1.8严重错配 
     
     st.divider()
     
@@ -112,7 +112,7 @@ with st.sidebar:
     min_wage_change = st.slider("最低工资调整幅度 (%)", 0, 30, 0, step=5)
     
     st.markdown("**尝试 B：需求侧收入转移**")
-    ubi_rate = st.slider("失业救济替代率 (%)", 40, 90, 40, step=5) # 基期为40%
+    ubi_rate = st.slider("失业救济替代率 (%)", 40, 90, 40, step=5) # 基期为40% 
     
     st.markdown("**尝试 C：供给侧结构性改革**")
     reskilling_subsidy = st.slider("技能重塑补贴力度 (π)", 0.0, 1.0, 0.0, step=0.1)
@@ -144,11 +144,11 @@ with col1:
         mode='markers+text', 
         name='当前市场均衡点',
         marker=dict(color='#ef4444', size=14, line=dict(color='white', width=2)),
-        text=[f"U:{cur_u::.1f}%, V:{cur_v::.1f}%"],
+        text=[f"U:{cur_u:.1f}%, V:{cur_v:.1f}%"], # 已修复报错
         textposition="top right"
     ))
     
-    # 动态视觉交互：当曲线因 AI 或 救济金 外移时，增加色块或标注
+    # 动态视觉交互：当曲线因 AI 或 救济金 外移时，增加色块或标注 
     if ai_risk >= 40 or ubi_rate > 40:
         fig1.add_annotation(
             x=12, y=18,
@@ -178,8 +178,8 @@ with col1:
 
 with col2:
     st.markdown("##### 📊 沙盘实时量化指标")
-    st.markdown(f"<div class='metric-label'>当前测算失业率 (U)</div><div class='metric-value'>{cur_u::.2f}%</div>", unsafe_allow_html=True)
-    st.markdown(f"<div class='metric-label'>当前岗位空缺率 (V)</div><div class='metric-value' style='color:#f59e0b;'>{cur_v::.2f}%</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='metric-label'>当前测算失业率 (U)</div><div class='metric-value'>{cur_u:.2f}%</div>", unsafe_allow_html=True) # 已修复报错
+    st.markdown(f"<div class='metric-label'>当前岗位空缺率 (V)</div><div class='metric-value' style='color:#f59e0b;'>{cur_v:.2f}%</div>", unsafe_allow_html=True) # 已修复报错
     st.markdown("<br>", unsafe_allow_html=True)
     
     st.markdown("##### 🚨 决策树即时诊断")
@@ -231,7 +231,7 @@ with col_c:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ==========================================
-# 6. 自动化闭环：OBE 成果报告一键生成
+# 6. 自动化闭环：OBE 成果报告一键生成 
 # ==========================================
 st.markdown('<div class="card">', unsafe_allow_html=True)
 st.markdown('<div class="card-header">📥 自动化生成《宏观经济诊断报告》 (OBE 导向)</div>', unsafe_allow_html=True)
@@ -248,7 +248,7 @@ report_text = f"""# 《AI冲击下的结构性失业诊断与政策处方》
 
 ## 二、 反事实推理与决策链路记录
 1. **需求侧价格冲击 (尝试 A)**: 最低工资变动了 **+{min_wage_change}%**。
-   *结果反馈*: 均衡失业率移至 **{cur_u::.1f}%**。验证了单纯提高工资不仅无法解除技能错配，还会导致用工需求收缩。
+   *结果反馈*: 均衡失业率移至 **{cur_u:.1f}%**。验证了单纯提高工资不仅无法解除技能错配，还会导致用工需求收缩。
 2. **需求侧收入转移 (尝试 B)**: 失业救济替代率调至 **{ubi_rate}%**。
    *结果反馈*: 贝弗里奇曲线匹配常数发生变动。证明了过高的福利转移支付会产生逆向激励，引发道德风险。
 3. **供给侧结构性改革 (尝试 C)**: 技能重塑补贴力度设定为 **{reskilling_subsidy}**。
