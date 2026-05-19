@@ -98,14 +98,12 @@ st.markdown("""
 st.markdown("""
 <div class="school-banner">
     <div>
-        <div class="school-name">🏛️ 西南交通大学希望学院 · 商学院</div>
         <div class="system-title">劳动力市场数字孪生实验平台</div>
         <div style="font-size: 20px; font-weight: 600; margin-top:10px;">
             Designed for: <span style="border-bottom: 2px solid #fbbf24;">人力资源管理专业 (HRM)</span>
         </div>
     </div>
     <div style="text-align: right;">
-        <div class="author-badge">👩‍🏫 课程负责人：黎雅月</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
