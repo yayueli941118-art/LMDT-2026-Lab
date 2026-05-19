@@ -179,8 +179,6 @@ st.markdown("""
 # 侧边栏补充信息
 with st.sidebar:
     st.image("https://img.icons8.com/fluency/96/teacher.png", width=80)
-    st.markdown("### 👩‍🏫 课程负责人：黎雅月")
-    st.info("**西南交通大学希望学院**\n\n人力资源管理专业核心课\n《劳动经济学》教学团队")
     
     st.divider()
     st.markdown("#### 📌 实验进度")
