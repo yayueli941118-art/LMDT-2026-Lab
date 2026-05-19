@@ -148,13 +148,27 @@ with col1:
         textposition="top right"
     ))
     
-    # 动态视觉交互：当曲线因 AI 或 救济金 外移时，增加色块或标注 
+   # 动态视觉交互：当曲线因 AI 或 救济金 外移时，增加色块或标注 
     if ai_risk >= 40 or ubi_rate > 40:
         fig1.add_annotation(
             x=12, y=18,
             text="技术冲击/保留工资上升导致曲线外移（匹配效率恶化）",
-            showarrow=True, arrowhead=2, color="red",
+            showarrow=True, arrowhead=2, arrowcolor="#ef4444", # 修改为 arrowcolor
             ax=40, ay=-30, font=dict(color="#ef4444", size=12)
+        )
+    if reskilling_subsidy > 0.4:
+        fig1.add_annotation(
+            x=4, y=6,
+            text="供给侧干预生效：曲线向原点回归",
+            showarrow=True, arrowhead=2, arrowcolor="#22c55e", # 修改为 arrowcolor
+            ax=-30, ay=40, font=dict(color="#22c55e", size=12)
+        )
+    if reskilling_subsidy > 0.4:
+        fig1.add_annotation(
+            x=4, y=6,
+            text="供给侧干预生效：曲线向原点回归",
+            showarrow=True, arrowhead=2, arrowcolor="#22c55e", # 修改为 arrowcolor
+            ax=-30, ay=40, font=dict(color="#22c55e", size=12)
         )
     if reskilling_subsidy > 0.4:
         fig1.add_annotation(
@@ -267,3 +281,4 @@ st.download_button(
     type="primary"
 )
 st.markdown('</div>', unsafe_allow_html=True)
+
